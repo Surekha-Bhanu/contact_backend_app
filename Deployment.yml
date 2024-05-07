@@ -16,7 +16,7 @@ spec:
   spec:
     containers:
     - name: contactbackendcontainer
-      image: ashokit/contact_backend_app
+      image: contact_backend_app
       ports:
       - containerPort: 8080
 ---
@@ -25,10 +25,11 @@ kind: Service
 metadata:
  name: contactbackendsvc
 spec:
-  type: LoadBalancer
+  type: Nodeport
   selector:
    app: contactbackend
   ports:
    - port: 80
      targetPort: 8080
+     nodeport: 30001
 ...
